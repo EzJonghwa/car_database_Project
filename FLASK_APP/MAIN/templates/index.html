@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+       <!-- 프레임 워크   -->
+   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+   <!-- 프레임 워크   -->
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&display=swap" rel="stylesheet">
+
+</head>
+<style>
+   @-webkit-keyframes scale-in-center{0%{-webkit-transform:scale(0);transform:scale(0);opacity:1}100%{-webkit-transform:scale(1);transform:scale(1);opacity:1}}@keyframes scale-in-center{0%{-webkit-transform:scale(0);transform:scale(0);opacity:1}100%{-webkit-transform:scale(1);transform:scale(1);opacity:1}}
+.scale-in-center{-webkit-animation:scale-in-center .5s cubic-bezier(.25,.46,.45,.94) .2s both;animation:scale-in-center .5s cubic-bezier(.25,.46,.45,.94) .2s both}
+.scale-in-center1{-webkit-animation:scale-in-center .8s cubic-bezier(.25,.46,.45,.94) .3s both;animation:scale-in-center .5s cubic-bezier(.25,.46,.45,.94) .3s both}
+
+  @font-face {
+        font-family: 'neon';
+        src: url('/static/font/pixelroborobo.otf') format('truetype');
+    }
+    body{
+      font-family: 'neon';
+      -ms-overflow-style: none;
+
+    }
+    ::-webkit-scrollbar {
+        display: none;
+      }
+    a{
+        text-decoration: none;
+        color: black;
+
+    }
+   #mainsize{
+      border: 10px solid;
+      width: 800px; height: 920px;
+      border-radius: 20px;
+      background-color: aliceblue;
+
+    }
+    #head{
+
+      height: 50px;
+
+
+    }
+  #window{
+
+      border: 10px solid; height: 750px;
+      border-radius: 20px;
+      padding-top: 20px;
+      background-color: #B1D690;
+    }
+     #con{
+      border: 10px solid;
+      width: 300px;
+      margin-bottom: 1px;
+      height: 30px;
+      border-radius: 15px;
+      display:inline-block;
+
+    }
+    #camera{
+      display:inline-block;
+
+      border-radius: 100%;
+      height: 35px;
+      width: 35px;
+      background-color: black;
+    }
+    #light{
+
+      height: 40px;
+      border-radius: 5px;
+      display:inline-block;
+
+
+    }
+    #light1{
+      margin-right: 1px;
+      border-bottom: 4px solid;
+      border-left: 4px solid;
+      border-right: 4px solid;
+      width: 15px;
+      height: 35px;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+      display:inline-block;
+      background-color: rgb(195, 255, 104);
+
+    }
+    #light2{
+      margin-right: 15px;
+      border-bottom: 4px solid;
+      border-left: 4px solid;
+      border-right: 4px solid;
+      width: 15px;
+      height: 35px;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+      display:inline-block;
+      background-color: rgb(254, 95, 95);
+
+      }
+
+     #home{
+            background-color: black;
+            height: 80px;
+            width: 80px;
+            border-radius: 100px;
+
+    }
+    #home{
+            background-color: black;
+            height: 80px;
+            width: 80px;
+            border-radius: 100px;
+
+    }
+        #home:hover {
+      background-color: rgb(26, 26, 26);
+      transform: scale(0.98);
+      transition-duration: 0.5s;
+
+        }
+
+
+      #resultcoomponent{
+         height:130px;
+        border: 5px solid;
+        border-radius: 15px;
+        padding-left: 50px;
+        padding-right: 30px;
+        margin-left:20px;
+        margin-right:20px;
+        color:white;
+      }
+      #list{
+        margin-top: 25px;
+      }
+      #searchResults{
+    height:500px; width:708px; border: 6px solid;	border-radius: 15px;
+    background-color: #FFA24C;
+    }
+
+#image{
+
+        border: 5px solid;
+        border-radius: 40px;
+        width: 110px;
+        height: 110px;
+        margin : 5px;
+      }
+
+#text_area{
+    background-color : #FEEC37;
+    width:600px;
+    border: 6px solid;
+    border-radius: 20px;
+    margin-bottom:10px;
+    }
+     @keyframes blinkC { /* 색이 깜빡거리는 */
+    50% {background-color:yellow}
+    }
+    @keyframes blinkC2 { /* 색이 깜빡거리는 */
+    50% {background-color:grey}
+    }
+
+
+    .blinking-text {
+      animation: blinkC 0.6s infinite; /* 1초 간격으로 무한 반복 */
+    }
+    .blinking-text2 {
+      animation: blinkC2 1.5s infinite; /* 1초 간격으로 무한 반복 */
+    }
+@-webkit-keyframes swing-in-top-fwd {
+  0% {
+    -webkit-transform: rotateX(-100deg);
+            transform: rotateX(-100deg);
+    -webkit-transform-origin: top;
+            transform-origin: top;
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: rotateX(0deg);
+            transform: rotateX(0deg);
+    -webkit-transform-origin: top;
+            transform-origin: top;
+    opacity: 1;
+  }
+}
+    @keyframes swing-in-top-fwd {
+      0% {
+        -webkit-transform: rotateX(-100deg);
+                transform: rotateX(-100deg);
+        -webkit-transform-origin: top;
+                transform-origin: top;
+        opacity: 0;
+      }
+      100% {
+        -webkit-transform: rotateX(0deg);
+                transform: rotateX(0deg);
+        -webkit-transform-origin: top;
+                transform-origin: top;
+        opacity: 1;
+      }
+    }
+
+    .swing-in-top-fwd {
+	-webkit-animation: swing-in-top-fwd 0.9s cubic-bezier(0.175, 0.885, 0.320, 1.275) 0.5s both;
+	        animation: swing-in-top-fwd 0.9s cubic-bezier(0.175, 0.885, 0.320, 1.275) 0.5s both;
+    }
+     .swing-in-top-fwd2 {
+	-webkit-animation: swing-in-top-fwd 0.9s cubic-bezier(0.175, 0.885, 0.320, 1.275) 0.8s both;
+	        animation: swing-in-top-fwd 0.9s cubic-bezier(0.175, 0.885, 0.320, 1.275) 0.8s both;
+    }
+    @-webkit-keyframes slide-in-fwd-center {
+  0% {
+    -webkit-transform: translateZ(-1400px);
+            transform: translateZ(-1400px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    opacity: 1;
+  }
+}
+    @keyframes slide-in-fwd-center {
+      0% {
+        -webkit-transform: translateZ(-1400px);
+                transform: translateZ(-1400px);
+        opacity: 0;
+      }
+      100% {
+        -webkit-transform: translateZ(0);
+                transform: translateZ(0);
+        opacity: 1;
+      }
+    }
+
+    .slide-in-fwd-center {
+	-webkit-animation: slide-in-fwd-center 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.2s both;
+	        animation: slide-in-fwd-center 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.2s both;
+    }
+     #resultcoomponent:hover {
+        opacity: 0.8;
+      transform: scale(1.05);
+      transition-duration: 0.2s;
+
+        }
+</style>
+<script>
+</script>
+<body>
+
+  <div class="container" id="mainsize">
+    <div class="row" id="head">
+
+    <div class="col" style="margin-top: 8px;">
+      <span id="camera" ></span>
+      <span id="camera"></span>
+    </div>
+    <div class="col" style="margin-top: 10px;">
+      <span id="con"></span>
+    </div>
+
+    <div class="col d-flex justify-content-end" id="light">
+      <span class="blinking-text" id="light1"></span>
+      <span class="blinking-text2" id="light2"></span>
+    </div>
+
+    </div>
+
+
+    <div class="container" id="window">
+
+
+      <div class="container">
+           <div class="container swing-in-top-fwd" id="text_area" >
+      <div class="fs-3" style="text-align: center;"> 고양이 Search</div>
+      <div class="fs-6 mb-2" style="text-align: center;"> 이미지를 선택해 업로드한 후 <br> 내 고양이의 품종이 무엇인지 찾아보세요!</div>
+        </div>
+        <form action="/index" method="POST" enctype="multipart/form-data" class="text-center mt-4 swing-in-top-fwd2">
+            <input type="file" name="file" id="imageUpload" class="form-control-file mb-3" accept="image/*" required style="display: none;">
+            <button class="btn btn-primary" onclick="document.getElementById('imageUpload').click();">이미지 선택</button>
+            <button type="submit" class="btn btn-warning" style="color:white;">이미지 업로드 및 예측</button>
+        </form>
+
+
+          {% if image_path %}
+    <div class="container d-flex justify-content-center mt-2 slide-in-fwd-center" id="scroll">
+    <div id="searchResults" class="accordion overflow-auto">
+
+        <div class="text-center mt-4" style="color:white;">
+            <h4>업로드한 이미지</h4>
+            <img src="{{ image_path }}" alt="Uploaded Image" class="img-thumbnail" style="max-width:300px; border-radius:20px">
+        </div>
+        {% endif %}
+
+        {% if result %}
+        <div class="mt-4" style="text-align:center; color:white;">
+            <h4>예측 결과</h4>
+                {% for cat in result %}
+                  <a href="{{ url_for('boardview', id=cat.label) }}" >
+                      <div id="resultcoomponent" class="row my-3">
+                <div class="col-5">
+                  <img src="{{ url_for('static', filename='img/' ~ cat.cat_image) }}" alt="{{ cat.cat_name }}" id="image">
+                </div>
+                        <div class="col-3 " id="list" style="width:300px;">
+
+                         <span class="fs-4 mb-3 " style="display:block;">{{ cat.cat_name }}</span>
+                            <span class="fs-5 mb-3">({{ cat.label }})</span>
+                        </div>
+                      </div>
+                    </a>
+
+                {% endfor %}
+
+        </div>
+
+
+
+    </div>
+</div>
+          {% endif %}
+      </div>
+
+    </div>
+      <div class="container d-flex justify-content-center" style="  height: 110px;  padding-top:11px;">
+
+       <a href="{{ url_for('main') }}"><div class="d-flex justify-content-center" id="home" >
+        </div></a>
+
+      </div>
+  </div>
+
+
+</body>
+</html>

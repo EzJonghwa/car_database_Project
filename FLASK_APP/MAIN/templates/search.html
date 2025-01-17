@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cat Breed Recommendation</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h2>Cat Breed Recommendation</h2>
+    <form method="POST" action="/search">
+        <div class="form-group">
+            <label for="cat_id">Enter Cat ID:</label>
+            <input type="text" class="form-control" id="cat_id" name="cat_id" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Get Recommendations</button>
+    </form>
+
+    {% if similar_breeds %}
+    <h3 class="mt-4">Top Recommended Breeds</h3>
+    <ul class="list-group">
+        {% for rank, breed in similar_breeds.items() %}
+            <li class="list-group-item"><strong>{{ rank }}:</strong> {{ breed }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>
+
+
+</body>
+</html>

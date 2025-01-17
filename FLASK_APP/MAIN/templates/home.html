@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+       <!-- 프레임 워크   -->
+   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+   <!-- 프레임 워크   -->
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+   <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&display=swap" rel="stylesheet">
+
+</head>
+<style>
+
+@-webkit-keyframes scale-in-center{0%{-webkit-transform:scale(0);transform:scale(0);opacity:1}100%{-webkit-transform:scale(1);transform:scale(1);opacity:1}}@keyframes scale-in-center{0%{-webkit-transform:scale(0);transform:scale(0);opacity:1}100%{-webkit-transform:scale(1);transform:scale(1);opacity:1}}
+.scale-in-center{-webkit-animation:scale-in-center .5s cubic-bezier(.25,.46,.45,.94) .2s both;animation:scale-in-center .5s cubic-bezier(.25,.46,.45,.94) .2s both}
+.scale-in-center1{-webkit-animation:scale-in-center .8s cubic-bezier(.25,.46,.45,.94) .3s both;animation:scale-in-center .5s cubic-bezier(.25,.46,.45,.94) .3s both}
+
+
+  @font-face {
+        font-family: 'neon';
+        src: url('/static/font/pixelroborobo.otf') format('truetype');
+    }
+    body{
+      font-family: 'neon';
+      -ms-overflow-style: none;
+
+    }
+    ::-webkit-scrollbar {
+        display: none;
+      }
+    a{
+        text-decoration: none;
+        color: black;
+
+    }
+    #mainsize{
+      border: 10px solid;
+      width: 800px; height: 920px;
+      border-radius: 20px;
+      background-color: aliceblue;
+
+    }
+    #head{
+
+      height: 50px;
+
+
+    }
+    #window{
+
+      border: 10px solid; height: 750px;
+      border-radius: 20px;
+      padding-top: 20px;
+      background-color: black;
+
+    }
+    #con{
+      border: 10px solid;
+      width: 300px;
+      margin-bottom: 1px;
+      height: 30px;
+      border-radius: 15px;
+      display:inline-block;
+
+    }
+    #camera{
+      display:inline-block;
+      border-radius: 100%;
+      height: 35px;
+      width: 35px;
+      background-color: black;
+    }
+    #light{
+
+      height: 40px;
+      border-radius: 5px;
+      display:inline-block;
+
+
+    }
+    #light1{
+      margin-right: 1px;
+      border-bottom: 4px solid;
+      border-left: 4px solid;
+      border-right: 4px solid;
+      width: 15px;
+      height: 35px;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+      display:inline-block;
+      background-color: rgb(148, 148, 148);
+
+    }
+    #light2{
+      margin-right: 15px;
+      border-bottom: 4px solid;
+      border-left: 4px solid;
+      border-right: 4px solid;
+      width: 15px;
+      height: 35px;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+      display:inline-block;
+      background-color: rgb(148, 148, 148);
+
+      }
+
+
+
+      #resultcoomponent{
+        height:130px;
+        border: 1px solid;
+        border-radius: 15px;
+        padding-left: 80px;
+      }
+      #list{
+        margin-top: 25px;
+      }
+      #home{
+        background-color: black;
+        height: 80px;
+        width: 80px;
+        border-radius: 100px;
+
+
+      }
+
+       #home:hover {
+      background-color: rgb(26, 26, 26);
+      transform: scale(0.98);
+      transition-duration: 0.5s;
+
+        }
+        @keyframes slide-in-fwd-center {
+      0% {
+        -webkit-transform: translateZ(-1400px);
+                transform: translateZ(-1400px);
+        opacity: 0;
+      }
+      100% {
+        -webkit-transform: translateZ(0);
+                transform: translateZ(0);
+        opacity: 1;
+      }
+    }
+    .slide-in-fwd-center {
+	-webkit-animation: slide-in-fwd-center 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.8s both;
+	        animation: slide-in-fwd-center 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.8s both;
+    }
+
+    .blinking-text {
+      animation: blinkC 0.7s; /* 1초 간격으로 무한 반복 */
+    }
+    @keyframes blinkC { /* 색이 깜빡거리는 */
+    50% {background-color:rgb(83, 83, 83)}
+    }
+    .blinking-text2 {
+      animation: blinkT 0.9s infinite; /* 1초 간격으로 무한 반복 */
+    }
+    @keyframes blinkT { /* 색이 깜빡거리는 */
+    50% {background-color:rgb(253, 255, 136)}
+    }
+
+</style>
+
+
+<body>
+
+  <div class="container" id="mainsize">
+    <div class="row" id="head">
+
+    <div class="col" style="margin-top: 8px;">
+      <span id="camera" ></span>
+      <span id="camera"></span>
+    </div>
+    <div class="col" style="margin-top: 10px;">
+      <span id="con"></span>
+    </div>
+
+    <div class="col d-flex justify-content-end" id="light">
+      <span class="blinking-text2" id="light1"></span>
+      <span class="blinking-text2" id="light2"></span>
+    </div>
+
+    </div>
+
+    <div class="container  blinking-text" id="window" >
+      <div class="slide-in-fwd-center" id="current-date" style="color: aliceblue; font-size: 50px;  text-align: center; margin-top: 40px;"></div>
+      <div class="slide-in-fwd-center" id="timeDisplay" style="color: aliceblue; font-size: 80px; text-align: center;"></div>
+
+
+      <script>
+        function getCurrentTime() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            return `${hours}:${minutes}:${seconds}`;
+        }
+
+        document.getElementById("timeDisplay").innerText = getCurrentTime();
+
+        // 1초마다 시간 업데이트
+        setInterval(() => {
+            document.getElementById("timeDisplay").innerText = getCurrentTime();
+        }, 1000);
+
+        function getCurrentDate() {
+          const today = new Date();
+          const year = today.getFullYear();
+          const month = String(today.getMonth() + 1).padStart(2, '0'); // 월은 0부터 시작하므로 +1
+          const day = String(today.getDate()).padStart(2, '0');
+
+          return `${year}-${month}-${day}`;
+      }
+
+      // 날짜를 화면에 표시
+      document.getElementById('current-date').textContent = `${getCurrentDate()}`;
+
+    </script>
+
+        <div class="slide-in-fwd-center d-flex justify-content-center" style="margin-top: 120px;">
+
+          <div style="width: 120px; height: 120px; text-align: center; cursor:pointer;" ondblclick="location.href ='{{ url_for('mainpage') }}'">
+          <img src="/static/v_img/Dancing kitty.gif" style=" border: 5px solid;
+            border-radius: 20px; height: 90px; width: 100px; margin-left: 10px; margin-bottom: 10px;">
+          <h4 style="color: white;">FindMyCat</h4>
+        </div>
+
+        </div>
+
+
+        </div>
+
+
+      <div class="container d-flex justify-content-center" style=" height: 110px; padding-top:11px;">
+
+       <a href="{{ url_for('main') }}"><div class="d-flex justify-content-center" id="home">
+        </div></a>
+
+      </div>
+      </div>
+
+</body>
+</html>
